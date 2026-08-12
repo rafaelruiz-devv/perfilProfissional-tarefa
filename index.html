@@ -7,74 +7,198 @@
     <title>Meu perfil profissional </title>
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .container{
-            max-width: 800px;
-            background-color: #fff;
-            margin: 20px;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba((0), 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        header {
-            text-align: center;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-        .profile-img{
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #3498db;
-        }
-        h1{
-            margin: 10px 0 5px 0;
-            color: #2c3e50;
-    
-        }
-        .subtitle{
-            font-style: italic;
-            color: #7f8c8d;
-        }
-        h2 {
-            color: #3498db;
-            border-left: 5px solid #3498db;
-            padding-left: 10px;
-        }
-        ul {
-            list-style-type: square;
-        }
-        .card {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        footer a{
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer a:hover{
-            text-decoration: underline;
-        }
-    </style>
+    /* Reset básico e variáveis de cores */
+    :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --accent: #10b981;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        line-height: 1.6;
+    }
+
+    /* Container Principal com visual de cartão flutuante */
+    .container {
+        max-width: 800px;
+        width: 100%;
+        background-color: var(--card-bg);
+        padding: 48px;
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+        border: 1px solid var(--border);
+    }
+
+    /* Header e foto de perfil */
+    header {
+        text-align: center;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 30px;
+        margin-bottom: 32px;
+    }
+
+    .profile-img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--primary);
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+        transform: scale(1.05);
+    }
+
+    h1 {
+        margin: 16px 0 6px 0;
+        color: var(--text-main);
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    header p {
+        margin: 0;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.05rem;
+    }
+
+    /* Estilização das Seções e Títulos */
+    section {
+        margin-bottom: 32px;
+    }
+
+    h2 {
+        color: var(--text-main);
+        border-left: 4px solid var(--accent);
+        padding-left: 12px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    p {
+        color: var(--text-muted);
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    /* Lista de Habilidades personalizada */
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    ul li {
+        background-color: var(--bg);
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s ease;
+    }
+
+    ul li:hover {
+        background-color: #f1f5f9;
+    }
+
+    ul li::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin-right: 12px;
+        line-height: 0;
+    }
+
+    /* Experiência / Cards */
+    section > div {
+        background-color: var(--bg);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+    }
+
+    h3 {
+        margin: 0 0 8px 0;
+        color: var(--text-main);
+        font-size: 1.1rem;
+    }
+
+    /* Rodapé e Links de Contato */
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+
+    footer h2 {
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 16px;
+    }
+
+    footer p {
+        margin-bottom: 8px;
+    }
+
+    footer div {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    footer a {
+        display: inline-block;
+        background-color: var(--primary);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    footer a:hover {
+        background-color: var(--primary-hover);
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+</style>
 
 </head>
 
@@ -91,6 +215,8 @@
                 <p> Olá eu sou o Rafael, conehcido como rafão, tenho 16 anos de idade, sou estudante de tecnologia
                     apaixonado por criar soluções digitais e aprender novas linguagens de programção, uma pessoa focada
                     para conseguir resolver problemas diários e muito focado no estudo. </p>
+                    <h2> TimeLine </h2>
+                    <p> Quando eu era criança, eu sempre quis descobrir muita coisa sobre o mundo real, com o passar do tempo, esse desejo foi aumentando cada vez mais e mais. E hoje, eu posso descobrir várias coisas novas, cada dia, cada vez mais, eu aprendo mais coisa, quanto sobre a vida, quanto sobre a vida escolar ou no SENAI.</p>
             </section>
             <section>
                 <h2> Habilidades </h2>
@@ -113,9 +239,10 @@
         <footer>
             <h2> Contato </h2>
             <p> Email: rafael.ruiz@edu.senai.br </p>
+            <p> Telefone: (18) 99814-4747</p>
             <div>
                 <a href=""> Linkedin </a>
-                <a href=""> GitHub </a>
+                <a href="https://github.com/rafaelruiz-devv"> GitHub </a>
             </div>
         </footer>
     </div>
